@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DatabindingDemo</string>
+    <string name="user_id">用户Id:%s</string>
+    <string name="user_name">用户名:%s</string>
+</resources>
