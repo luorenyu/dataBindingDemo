@@ -3,6 +3,8 @@ package com.ronnyluo.databindingdemo.model
 import android.os.Build
 import android.os.SystemClock
 import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import com.ronnyluo.databindingdemo.BR
 import com.ronnyluo.databindingdemo.base.DataCompare
 
 /**
@@ -19,6 +21,25 @@ class UserModel : BaseObservable(), DataCompare<UserModel> {
     var name: String = ""
     var password: String = ""
     var avatar: String = ""
+
+    // praise,和praise2 分别用了两种方式实现在数据类中使用可观察数据
+//    var praise: ObservableInt = ObservableInt(0)
+
+    @Bindable
+    var praise: Int = 0
+        set(int: Int) {
+            field = int
+            notifyPropertyChanged(BR.praise)
+        }
+
+    @Bindable
+    var isPraise: Boolean = false
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.isPraise)
+        }
+
+
     override fun areItemsTheSame(newItem: UserModel): Boolean {
         return this.id == newItem.id
     }

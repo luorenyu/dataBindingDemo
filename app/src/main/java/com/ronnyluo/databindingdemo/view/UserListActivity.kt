@@ -28,11 +28,18 @@ class UserListActivity : BaseActivity<ActivityUserListBinding, UserListViewModel
     }
 
     override fun initData() {
+        mBinding.viewModel = mViewModel
         //观察UserList数据
         mViewModel.userList.observe(this, Observer {
             (mBinding.recyclerView.adapter as UserListAdapter).submitList(it)
         })
         //获取数据
-        mViewModel.getUserList()
+//        mViewModel.getUserList()
+        mViewModel.isRefreshing.observe(this, Observer {
+            if (it) {
+                mViewModel.getUserList()
+            }
+        })
+        mViewModel.isRefreshing.value = true
     }
 }

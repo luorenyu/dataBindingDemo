@@ -1,5 +1,6 @@
 package com.ronnyluo.databindingdemo
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
@@ -7,6 +8,16 @@ import androidx.databinding.InverseBindingListener
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+
+
+/***************************************************
+ * [ImageView]的绑定
+ **************************************************/
+
+@BindingAdapter("app:isSelected")
+fun setSelected(view: View, isSelected: Boolean) {
+    view.isSelected = isSelected
+}
 
 
 /***************************************************
